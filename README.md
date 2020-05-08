@@ -29,15 +29,50 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain how to build stateful class components.
-You have to have several syntactic parts to build a class component
+You have to have several syntactic parts to build a class component. You need to define a class that extends Component and has a render function. It also needs a constructor, and, if you want props, write props within the constructor, declare super and write props within super. Though this syntax is not needed due to babel in create react app it is still good practice to recongnize what is going on under the hood. Props can be accessed with this.props. Inside the constructor you can access state with this.state = {} and then set up state how you need to. State is accessed elsewhere in the component with this.state. 
 
 2. Describe the different phases of the component lifecycle.
 
+The different phases can be thought of as mounting(birth of your component), updating (growth of your component) and unmounting (death of your component). There's a required method called render(). It handles the rendering of the component to the UI during the mounting and updating of the component.  
+
+Mounting (when component is first rendered to the DOM it goes through this)
+-constructor
+-render
+(react updates DOM and refs)
+-componentDidMount
+
+Updating
+-render
+-react updates DOM and refs
+-componentDidUpdate
+
+Unmounting 
+-componentWillUnmount
+
+
 3. Demonstrate an understanding of class component lifecycle methods.
 
-4. Define stateful logic.
+componentDidMount()
+-fetches initial data from API
+-set up event listeners or timers
 
-5. Describe how to test a React component with React Testing Library.
+componentDidUpdate()
+-when certain state or props change, some code will run
+-takes prevProps and prevState as optional arguments so that you can compare old state with new state. You need these arguments to check because state will have changed. 
+
+componentWillUnmount()
+-closely tied to CDM 
+-it cleans up any event listeners or timers that were started in CDM 
+
+IN SUM : constructor runs, then renders runs, cdm in child runs, cdm in parent runs, render runs, cdu runs, cwu runs 
+
+4. Define stateful logic.
+State is a combination of values that describe the current condition of the UI. It can be shared between components in the sense that they are subscribed to its' changes and, some of them, can perform changes on it. Stateful logic is any code that uses state, but in the case of hooks it is a behavior created with the use of one or more hooks. It's like a perk that you're adding to a component. A perk is a good example because it tells you that its value is specific to that component, but more than one component can have that perk, that's why it's called reusable. As a note when you reuse a custom hook in multiple components, the actual state data will not be shared between those components. There will be a separate instance of the state data for each use of the hook.
+
+If you do want to share the state, then you would be looking at using the useContext hook (which could also be used in a custom hook which would then mean the multiple uses of the hook could share state).
+
+5. Describe how to test a React component with React Testing Library. 
+Fortunately React Testing Library comes with create-react-app so no other dependencies need to be installed. If you want to set up a test it's best practice to create a file with the same name as the component you want to test along with the file extension .test.js. By adding this extension React knows that this is a test file. You do need to import React into the test file and the component you want to test, but everything else is ready to go. To set up a test you write test() along with a good description of what you want to test ---> test("testing that the form is submitting the form inputs"). You also need a call back function and inside the test you follow the Arrange, Act and Assert (or Expect) work flow. Arranging means you set up your testing environment by extracting the methods you will use to query. These come from render and are built into react testing libray. Next you can either go to the Assert or Expect part of the cycle if you do not have an action to take. But if you do you would use a method like change along with fireEvent to simulate what would be happening by the user. You would mostly likely need to also grab the button or whatever it is that creates the change and simulate a click. Then from there you can check that the expected value is in the document.  
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 

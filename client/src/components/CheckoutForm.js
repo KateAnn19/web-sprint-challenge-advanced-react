@@ -68,6 +68,8 @@ const CheckoutForm = (props) => {
           Zip:
           <input name="zip" value={values.zip} onChange={handleChanges} />
         </label>
+        
+        <button color="red" onClick={clearForm}>Clear</button>
         <button>Checkout</button>
       </form>
 
