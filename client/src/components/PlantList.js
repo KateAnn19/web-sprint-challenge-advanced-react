@@ -47,7 +47,7 @@ export default class PlantList extends Component {
     return (
       <main className="plant-list">
          <form>
-        <label htmlFor="searchTerm">Search For Your Fav Plant</label>
+        <label htmlFor="searchTerm">What Plant Do You Need</label>
         <input
           id="searchTerm"
           type="text"
