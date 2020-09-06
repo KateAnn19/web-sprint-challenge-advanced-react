@@ -15,8 +15,10 @@ test("form shows success message on submit with form details", () => {
     const{getByLabelText, getByText, getByTestId, getByRole} = render(<CheckoutForm/>);
 
   //querying for all the input nodes
-  const fNameInput = getByLabelText(/f\s*i\s*r\s*s\s*t\s*N\s*a\s*m\s*e\s*/i);
-  const lNameInput = getByLabelText(/l\s*a\s*s\s*t\s*N\s*a\s*m\s*e/i);
+//   const fNameInput = getByLabelText(/f\s*i\s*r\s*s\s*t\s*N\s*a\s*m\s*e\s*/i);
+  const fNameInput = getByLabelText(/first name/i);
+  //const lNameInput = getByLabelText(/l\s*a\s*s\s*t\s*N\s*a\s*m\s*e/i);
+  const lNameInput = getByLabelText(/last name/i);
   const addressInput = getByLabelText(/address/i);
   const cityInput = getByLabelText(/city/i);
   const stateInput = getByLabelText(/state/i);
